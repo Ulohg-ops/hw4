@@ -17,7 +17,7 @@ int create_sem(char *path, char name, int initval) {
   union semun arg ;
   static ushort start_val[1] = { 0 } ;
   
-  ipc_key = ftok(path,name); 
+  ipc_key = ftok(path,name);// 把path 和 name的低8bit 組合成一個key_t type 的變數
   semid = semget(ipc_key, 1, IPC_CREAT| 0666) ;
 
   if (semid != -1) {
